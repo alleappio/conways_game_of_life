@@ -1,11 +1,26 @@
 import pygame
+import numpy
+from Cells import *
 from constants import *
 
-def loop(screen):
+def draw_grid(screen):
+    hLinesNumber = GRID["WIDTH"]
+    vLinesNumber = GRID["HEIGHT"]
+    for i in range(0,int(hLinesNumber)):
+        x = i*SCREEN["WIDTH"]/hLinesNumber
+        pygame.draw.line(screen, COLORS["LINE_COLOR"],  (x, 0), (x, SCREEN["HEIGHT"]))
+    for i in range(0,int(vLinesNumber)):
+        y = i*SCREEN["HEIGHT"]/vLinesNumber
+        pygame.draw.line(screen, COLORS["LINE_COLOR"],  (0, y), (SCREEN["WIDTH"], y))
+ 
+    
+
+def loop(screen, cells):
     background = (50,50,50)
     running = True
     while running:
         screen.fill(background)
+        draw_grid(screen)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -16,8 +31,9 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN["WIDTH"],SCREEN["HEIGHT"]))
     pygame.display.set_caption("Conway's game of life")
-
-    loop(screen)
+    cells = Cells(GRID["WIDTH"], GRID["HEIGHT"])
+    cells.randomFill()
+    loop(screen, cells)
     pygame.quit()
 
 
