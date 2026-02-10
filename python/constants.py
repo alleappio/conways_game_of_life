@@ -4,11 +4,12 @@ SCREEN = {
 }
 
 GRID = {
-    "WIDTH": 800,
-    "HEIGHT": 800
+    "WIDTH": 10,
+    "HEIGHT": 10
 }
 
 COLORS = {
-    "BACKGROUND_COLOR": (50,50,50)
+    "BACKGROUND_COLOR": (50,50,50),
+    "LINE_COLOR": (200,200,200)
 }
 
