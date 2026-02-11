@@ -10,6 +10,8 @@ GRID = {
 
 COLORS = {
     "BACKGROUND_COLOR": (50,50,50),
-    "LINE_COLOR": (200,200,200)
+    "LINE_COLOR": (200,200,200),
+    "CELL_COLOR": (175,175,175),
+    "RED_COLOR": (150,0,0)
 }
 

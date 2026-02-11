@@ -13,7 +13,18 @@ def draw_grid(screen):
         y = i*SCREEN["HEIGHT"]/vLinesNumber
         pygame.draw.line(screen, COLORS["LINE_COLOR"],  (0, y), (SCREEN["WIDTH"], y))
  
-    
+def draw_cells(screen, cells):
+    cellMatrix = cells.getCellMatrix()
+    offset = 4
+    print(cellMatrix)
+    w = SCREEN["WIDTH"]/GRID["WIDTH"]-offset
+    h = SCREEN["HEIGHT"]/GRID["HEIGHT"]-offset
+    for i in range(GRID["WIDTH"]):
+        for j in range(GRID["HEIGHT"]):
+            if cellMatrix[i,j] == 1:
+                y1 = i*(SCREEN["WIDTH"]/GRID["WIDTH"])+(offset/2)
+                x1 = j*(SCREEN["HEIGHT"]/GRID["HEIGHT"])+(offset/2)
+                pygame.draw.rect(screen, COLORS["LINE_COLOR"], pygame.Rect(x1,y1,w,h))
 
 def loop(screen, cells):
     background = (50,50,50)
@@ -21,6 +32,7 @@ def loop(screen, cells):
     while running:
         screen.fill(background)
         draw_grid(screen)
+        draw_cells(screen, cells)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
