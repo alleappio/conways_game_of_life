@@ -38,31 +38,37 @@ class Cells:
 
     
     def checkRules(self):
+        newMatrix = np.zeros((self.gridWidth, self.gridHeight))
         for i in range(self.gridWidth):
             for j in range(self.gridHeight):
-               nNumber = self.getNeighbors( i, j) 
-               self.cellMatrix[i,j] = self.applyRules(nNumber, self.cellMatrix[i,j])
+                nNumber = self.getNeighbors( i, j) 
+                newMatrix[i,j] = self.applyRules(nNumber, self.cellMatrix[i,j])
+        self.cellMatrix = newMatrix
 
     def applyRules(self, nNeighbors, cellValue):
-        if nNeighbors<2 and cellValue==1:
-            return 0
-        elif nNeighbors==2 or nNeighbors==3 and cellValue==1:
-            return 1
-        elif nNeighbors>3 and cellValue==1:
-            return 0
-        elif nNeighbors==3 and cellValue==0:
-            return 1
+        if cellValue==1:
+            if nNeighbors<2:
+                return 0
+            elif nNeighbors==2 or nNeighbors==3:
+                return 1
+            elif nNeighbors>3:
+                return 0
+
+        elif cellValue==0:
+            if nNeighbors==3:
+                return 1
+            else:
+                return 0
         else:
             return 0
 
     def getNeighbors(self, x, y):
         nNumber = 0;
-        for i in (-1,0,1):
-            for j in (-1,0,1):
-                if x+i < 0 or x+i > self.gridWidth-i or y+j < 0 or y+j > self.gridHeight-1 or (i==0 and j==0):
-                    nNumber+=0
-                else:
-                    nNumber+= self.cellMatrix[x+i, y+j]
+        for i in range(x-1,x+2):
+            for j in range(y-1,y+2):
+                if i >= 0 and i < self.gridWidth and j >= 0 and j < self.gridHeight:
+                    nNumber += self.cellMatrix[i, j]
+        nNumber -= self.cellMatrix[x,y]
         return nNumber
 
     def getCellMatrix(self):

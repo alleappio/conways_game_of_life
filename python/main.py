@@ -39,7 +39,7 @@ def loop(screen, cells):
             if event.type == pygame.QUIT:
                 running = False
         pygame.display.update()
-        # time.sleep(0.5)
+        time.sleep(0.1)
 
 
 def main():
@@ -48,6 +48,7 @@ def main():
     pygame.display.set_caption("Conway's game of life")
     cells = Cells(GRID["WIDTH"], GRID["HEIGHT"])
     cells.randomFill()
+    # cells.createGlider(25,25)
     loop(screen, cells)
     pygame.quit()
 
