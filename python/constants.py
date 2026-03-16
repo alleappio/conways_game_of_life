@@ -1,11 +1,11 @@
 SCREEN = {
-    "WIDTH": 800,
-    "HEIGHT": 800
+    "WIDTH": 1000,
+    "HEIGHT": 1000
 }
 
 GRID = {
-    "WIDTH": 50,
-    "HEIGHT": 50
+    "WIDTH": 100,
+    "HEIGHT": 100
 }
 
 COLORS = {

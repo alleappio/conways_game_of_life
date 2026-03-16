@@ -73,5 +73,6 @@ class Cells:
 
     def getCellMatrix(self):
         return self.cellMatrix
+
     def getCellMatrix(self):
         return self.cellMatrix

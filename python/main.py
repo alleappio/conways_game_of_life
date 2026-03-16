@@ -17,7 +17,6 @@ def draw_grid(screen):
 def draw_cells(screen, cells):
     cellMatrix = cells.getCellMatrix()
     offset = 4
-    print(cellMatrix)
     w = SCREEN["WIDTH"]/GRID["WIDTH"]-offset
     h = SCREEN["HEIGHT"]/GRID["HEIGHT"]-offset
     for i in range(GRID["WIDTH"]):
