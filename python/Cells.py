@@ -8,13 +8,34 @@ class Cells:
         self.gridHeight = gridHeight
         self.cellMatrix = np.zeros((gridWidth, gridHeight))
     
-    def randomFill(self):
-        for i in range(self.gridWidth):
-            for j in range(self.gridHeight):
-                self.cellMatrix[i,j] = random.randint(0,1)
+    def randomFill(self, number=-1):
+        if number==-1:
+            for i in range(self.gridWidth):
+                for j in range(self.gridHeight):
+                    self.cellMatrix[i,j] = random.randint(0,1)
+        else:
+            for _ in range(number):
+                i = random.randint(0,self.gridWidth-1)
+                j = random.randint(0,self.gridHeight-1)
+                self.cellMatrix[i,j] = 1
 
-    def getCellMatrix(self):
-        return self.cellMatrix
+    def createGlider(self, x=None, y=None):
+        """Creates a glider pattern on the grid."""
+        self.cellMatrix.fill(0)  # Clear the grid
+
+        if x is None:
+            x = self.gridWidth // 2
+        if y is None:
+            y = self.gridHeight // 2
+
+        # Glider pattern relative to (x, y)
+        glider_pattern = [(0, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+
+        for i_offset, j_offset in glider_pattern:
+            i, j = x + i_offset, y + j_offset
+            if 0 <= i < self.gridWidth and 0 <= j < self.gridHeight:
+                self.cellMatrix[i, j] = 1
+
     
     def checkRules(self):
         for i in range(self.gridWidth):
@@ -44,3 +65,7 @@ class Cells:
                     nNumber+= self.cellMatrix[x+i, y+j]
         return nNumber
 
+    def getCellMatrix(self):
+        return self.cellMatrix
+    def getCellMatrix(self):
+        return self.cellMatrix
