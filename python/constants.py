@@ -4,8 +4,8 @@ SCREEN = {
 }
 
 GRID = {
-    "WIDTH": 10,
-    "HEIGHT": 10
+    "WIDTH": 50,
+    "HEIGHT": 50
 }
 
 COLORS = {

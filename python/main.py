@@ -1,4 +1,5 @@
 import pygame
+import time
 import numpy
 from Cells import *
 from constants import *
@@ -30,6 +31,7 @@ def loop(screen, cells):
     background = (50,50,50)
     running = True
     while running:
+        cells.checkRules()
         screen.fill(background)
         draw_grid(screen)
         draw_cells(screen, cells)
@@ -37,6 +39,7 @@ def loop(screen, cells):
             if event.type == pygame.QUIT:
                 running = False
         pygame.display.update()
+        # time.sleep(0.5)
 
 
 def main():
