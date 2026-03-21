@@ -1,19 +1,16 @@
 #ifndef UI_H
 #define UI_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_error.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_pixels.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_video.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_video.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct {
     unsigned int width;
     unsigned int height;
     SDL_Window* window;
-    SDL_Surface* surface;
+    SDL_Renderer* renderer;
     SDL_Event events;
 } ui_t;
 
