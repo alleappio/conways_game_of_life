@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/conways_game_of_life.dir/link.d CMakeFiles/conways_game_of_life.dir/src/main.c.o CMakeFiles/conways_game_of_life.dir/src/ui.c.o -o conways_game_of_life  /usr/lib/libSDL2-2.0.so.0.3200.64

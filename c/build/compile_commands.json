@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/alle/DATA/progetti/conways_game_of_life/c/build",
+  "command": "/usr/bin/cc  -I/home/alle/DATA/progetti/conways_game_of_life/c/include -isystem /usr/include/SDL2  -o CMakeFiles/conways_game_of_life.dir/src/main.c.o -c /home/alle/DATA/progetti/conways_game_of_life/c/src/main.c",
+  "file": "/home/alle/DATA/progetti/conways_game_of_life/c/src/main.c",
+  "output": "CMakeFiles/conways_game_of_life.dir/src/main.c.o"
+},
+{
+  "directory": "/home/alle/DATA/progetti/conways_game_of_life/c/build",
+  "command": "/usr/bin/cc  -I/home/alle/DATA/progetti/conways_game_of_life/c/include -isystem /usr/include/SDL2  -o CMakeFiles/conways_game_of_life.dir/src/ui.c.o -c /home/alle/DATA/progetti/conways_game_of_life/c/src/ui.c",
+  "file": "/home/alle/DATA/progetti/conways_game_of_life/c/src/ui.c",
+  "output": "CMakeFiles/conways_game_of_life.dir/src/ui.c.o"
+}
+]
