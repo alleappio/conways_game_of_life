@@ -1,3 +1,0 @@
-/home/alle/DATA/progetti/conways_game_of_life/c/build/CMakeFiles/conways_game_of_life.dir
-/home/alle/DATA/progetti/conways_game_of_life/c/build/CMakeFiles/edit_cache.dir
-/home/alle/DATA/progetti/conways_game_of_life/c/build/CMakeFiles/rebuild_cache.dir
