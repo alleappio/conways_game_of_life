@@ -5,8 +5,8 @@
 
 const int WIDTH = 600;
 const int HEIGHT = 600;
-const int H_CELLS = 20;
-const int V_CELLS = 20;
+const int H_CELLS = 25;
+const int V_CELLS = 25;
 
 int main() {
     ui_t ui;

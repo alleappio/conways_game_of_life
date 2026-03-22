@@ -48,7 +48,7 @@ void UI_DrawCells(ui_t* ui, cell_grid_t* cell_grid) {
                 rect.w = ui->grid.horizontal_step;
                 rect.h = ui->grid.vertical_step;
 
-                // SDL_SetRenderDrawColor(ui->renderer, 0xeb, 0xdb, 0xb2, 0xff);
+                SDL_SetRenderDrawColor(ui->renderer, 0xeb, 0xdb, 0xb2, 0xff);
                 SDL_RenderFillRect(ui->renderer, &rect);
             }
         }
@@ -82,6 +82,9 @@ void UI_Loop(ui_t* ui, cell_grid_t* cell_grid) {
         UI_DrawGrid(ui);
         UI_DrawCells(ui, cell_grid);
         SDL_RenderPresent(ui->renderer);
+        CELLS_Update(cell_grid);
+        CELLS_Print(cell_grid);
+        SDL_Delay(100); // Delay for 100 milliseconds
     }
 }
 
