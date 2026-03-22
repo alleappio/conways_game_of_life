@@ -2,8 +2,8 @@
 #define UI_H
 
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_video.h>
 #include <SDL3/SDL_render.h>
+#include <SDL3/SDL_video.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -17,18 +17,23 @@ typedef struct {
 typedef struct {
     unsigned int width;
     unsigned int height;
+
     SDL_Window* window;
     SDL_Renderer* renderer;
     SDL_Event events;
+
+    grid_t grid;
 } ui_t;
 
+unsigned int UI_Initialize(ui_t* ui,
+                           char* title,
+                           int width,
+                           int height,
+                           unsigned int horizontal_cells_number,
+                           unsigned int vertical_cells_number);
 
-
-void init_grid(ui_t* ui, grid_t* grid, unsigned int vertical_number, unsigned int horizontal_number);
-
-unsigned int UI_Initialize(ui_t* ui, char* title, int WIDTH, int HEIGHT);
-void UI_DrawGrid(ui_t* ui, grid_t* grid);
-void UI_Loop(ui_t* ui, grid_t* grid);
+void UI_DrawGrid(ui_t* ui);
+void UI_Loop(ui_t* ui);
 void UI_Destroy(ui_t* ui);
 
 #endif // UI_H

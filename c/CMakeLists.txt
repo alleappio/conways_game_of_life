@@ -8,7 +8,8 @@ include_directories(include)
 
 add_executable(${PROJECT_NAME}
     src/main.c
-    src/ui.c)
+    src/ui.c
+    src/cells.c)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     SDL3::SDL3)
