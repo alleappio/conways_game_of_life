@@ -5,8 +5,8 @@
 
 const int WIDTH = 600;
 const int HEIGHT = 600;
-const int H_CELLS = 10;
-const int V_CELLS = 10;
+const int H_CELLS = 20;
+const int V_CELLS = 20;
 
 int main() {
     ui_t ui;
@@ -17,7 +17,7 @@ int main() {
 
     UI_Initialize(&ui, "conways game of life", WIDTH, HEIGHT, H_CELLS, V_CELLS);
 
-    UI_Loop(&ui);
+    UI_Loop(&ui, &cell_grid);
 
     printf("destroying everything\n");
     CELLS_Destroy(&cell_grid);

@@ -1,4 +1,6 @@
 #include "ui.h"
+#include <SDL3/SDL_rect.h>
+#include <SDL3/SDL_render.h>
 
 unsigned int UI_Initialize(ui_t* ui,
                            char* title,
@@ -7,15 +9,15 @@ unsigned int UI_Initialize(ui_t* ui,
                            unsigned int horizontal_cells_number,
                            unsigned int vertical_cells_number) {
 
-    ui->grid.horizontal_number = horizontal_cells_number;
-    ui->grid.vertical_number = vertical_cells_number;
-    ui->grid.horizontal_step = ui->width / horizontal_cells_number;
-    ui->grid.vertical_step = ui->height / vertical_cells_number;
-
     ui->width = width;
     ui->height = height;
     ui->window = NULL;
     ui->renderer = NULL;
+
+    ui->grid.horizontal_number = horizontal_cells_number;
+    ui->grid.vertical_number = vertical_cells_number;
+    ui->grid.horizontal_step = ui->width / horizontal_cells_number;
+    ui->grid.vertical_step = ui->height / vertical_cells_number;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("sdl could not initialize");
@@ -36,6 +38,23 @@ unsigned int UI_Initialize(ui_t* ui,
     return 0;
 }
 
+void UI_DrawCells(ui_t* ui, cell_grid_t* cell_grid) {
+    for (int i = 0; i < cell_grid->width; i++) {
+        for (int j = 0; j < cell_grid->height; j++) {
+            if (cell_grid->cells[CELLS_GetIndex(cell_grid, i, j)].state == alive) {
+                SDL_FRect rect;
+                rect.x = i * ui->grid.horizontal_step;
+                rect.y = j * ui->grid.vertical_step;
+                rect.w = ui->grid.horizontal_step;
+                rect.h = ui->grid.vertical_step;
+
+                // SDL_SetRenderDrawColor(ui->renderer, 0xeb, 0xdb, 0xb2, 0xff);
+                SDL_RenderFillRect(ui->renderer, &rect);
+            }
+        }
+    }
+}
+
 void UI_DrawGrid(ui_t* ui) {
     SDL_SetRenderDrawColor(ui->renderer, 0xeb, 0xdb, 0xb2, 0xff);
 
@@ -50,7 +69,7 @@ void UI_DrawGrid(ui_t* ui) {
     }
 }
 
-void UI_Loop(ui_t* ui) {
+void UI_Loop(ui_t* ui, cell_grid_t* cell_grid) {
     bool quit = false;
     while (!quit) {
         while (SDL_PollEvent(&ui->events)) {
@@ -61,6 +80,7 @@ void UI_Loop(ui_t* ui) {
         SDL_SetRenderDrawColor(ui->renderer, 0x28, 0x28, 0x28, 255); // RGBA: black
         SDL_RenderClear(ui->renderer);
         UI_DrawGrid(ui);
+        UI_DrawCells(ui, cell_grid);
         SDL_RenderPresent(ui->renderer);
     }
 }

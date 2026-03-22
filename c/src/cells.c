@@ -13,6 +13,7 @@ void CELLS_Initialize_random(cell_grid_t* cell_grid, unsigned int width, unsigne
     cell_grid->width = width;
     cell_grid->height = height;
     cell_grid->cells = malloc(sizeof(cell_t)*width*height);
+    srand(time(NULL));
     for(int i=0; i<width*height; i++){
         cell_grid->cells[i].state = rand()%2==0 ? dead : alive;
     }
@@ -26,6 +27,10 @@ void CELLS_Print(cell_grid_t* cell_grid){
         }
         printf("\n");
     }
+}
+
+unsigned int CELLS_GetIndex(cell_grid_t* cell_grid, unsigned int x, unsigned int y){
+    return (y*cell_grid->height)+x;
 }
 
 void CELLS_Destroy(cell_grid_t* cell_grid){

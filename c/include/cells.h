@@ -2,6 +2,7 @@
 #define CELLS_H
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 typedef enum { alive, dead } cell_state_t;
 
@@ -18,5 +19,6 @@ typedef struct {
 void CELLS_Initialize(cell_grid_t* cell_grid, unsigned int width, unsigned int height);
 void CELLS_Initialize_random(cell_grid_t* cell_grid, unsigned int width, unsigned int height);
 void CELLS_Print(cell_grid_t* cell_grid);
+unsigned int CELLS_GetIndex(cell_grid_t* cell_grid, unsigned int x, unsigned int y);
 void CELLS_Destroy(cell_grid_t* cell_grid);
 #endif // CELLS_H

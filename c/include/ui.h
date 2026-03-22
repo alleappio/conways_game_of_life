@@ -7,6 +7,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "cells.h"
+
 typedef struct {
     unsigned int horizontal_number;
     unsigned int vertical_number;
@@ -33,7 +35,8 @@ unsigned int UI_Initialize(ui_t* ui,
                            unsigned int vertical_cells_number);
 
 void UI_DrawGrid(ui_t* ui);
-void UI_Loop(ui_t* ui);
+void UI_DrawCells(ui_t* ui, cell_grid_t* cell_grid);
+void UI_Loop(ui_t* ui, cell_grid_t* cell_grid);
 void UI_Destroy(ui_t* ui);
 
 #endif // UI_H
