@@ -1,5 +1,5 @@
-project(conways_game_of_life)
 cmake_minimum_required(VERSION 4.0.0)
+project(conways_game_of_life)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 find_package(SDL3 REQUIRED)
