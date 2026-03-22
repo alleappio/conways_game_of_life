@@ -83,7 +83,6 @@ void UI_Loop(ui_t* ui, cell_grid_t* cell_grid) {
         UI_DrawCells(ui, cell_grid);
         SDL_RenderPresent(ui->renderer);
         CELLS_Update(cell_grid);
-        CELLS_Print(cell_grid);
         SDL_Delay(100); // Delay for 100 milliseconds
     }
 }
