@@ -8,6 +8,7 @@ use std::time::Duration;
 use raylib::prelude::*;
 
 use crate::cells::Cells;
+use crate::cells::Cell;
 use crate::conf::Conf;
 
 fn draw_grid(configuration: &Conf, d: &mut RaylibDrawHandle) {
@@ -36,7 +37,7 @@ fn draw_grid(configuration: &Conf, d: &mut RaylibDrawHandle) {
 fn draw_cells(cells: &mut Cells, config: &Conf, d: &mut RaylibDrawHandle) {
     for i in 0..config.grid.width as usize {
         for j in 0..config.grid.height as usize {
-            if cells.cell_matrix[j][i] {
+            if cells.cell_matrix[j][i] == Cell::Alive{
                 let x1 = i as i32 * config.screen.width / config.grid.width;
                 let y1 = j as i32 * config.screen.height / config.grid.height;
 

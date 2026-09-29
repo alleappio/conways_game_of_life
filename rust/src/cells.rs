@@ -1,7 +1,12 @@
+#[derive(Clone, Copy, PartialEq)]
+pub enum Cell {
+    Alive,
+    Dead
+}
 pub struct Cells {
     grid_width: usize,
     grid_height: usize,
-    pub cell_matrix: Vec<Vec<bool>>,
+    pub cell_matrix: Vec<Vec<Cell>>,
 }
 
 impl Cells {
@@ -9,7 +14,7 @@ impl Cells {
         Self {
             grid_width: width as usize,
             grid_height: height as usize,
-            cell_matrix: vec![vec![false; width as usize]; height as usize],
+            cell_matrix: vec![vec![Cell::Dead; width as usize]; height as usize],
         }
     }
 
@@ -17,15 +22,15 @@ impl Cells {
         for i in 0..self.grid_width {
             for j in 0..self.grid_height {
                 self.cell_matrix[i][j] = match rand::random_range(0..alive_chance) {
-                    1 => true,
-                    _ => false,
+                    1 => Cell::Alive,
+                    _ => Cell::Dead,
                 }
             }
         }
     }
 
     pub fn update(&mut self) {
-        let mut new_matrix = vec![vec![false; self.grid_width]; self.grid_height];
+        let mut new_matrix = vec![vec![Cell::Dead; self.grid_width]; self.grid_height];
         for i in 0..self.grid_height {
             for j in 0..self.grid_height {
                 let count = self.get_neighbors_number(i, j);
@@ -45,7 +50,7 @@ impl Cells {
                     && j < self.grid_height as i32
                     && (i as usize != x || j as usize != y)
                 {
-                    if self.cell_matrix[i as usize][j as usize] {
+                    if self.cell_matrix[i as usize][j as usize] == Cell::Alive {
                         count += 1;
                     }
                 }
@@ -54,16 +59,16 @@ impl Cells {
         count
     }
 
-    fn apply_rules(&mut self, neighbors_number: i32, state: bool) -> bool {
-        if state {
+    fn apply_rules(&mut self, neighbors_number: i32, cell: Cell) -> Cell {
+        if cell == Cell::Alive {
             if neighbors_number == 2 || neighbors_number == 3 {
-                return true;
+                return Cell::Alive;
             }
         } else {
             if neighbors_number == 3 {
-                return true;
+                return Cell::Alive;
             }
         }
-        return false;
+        return Cell::Dead;
     }
 }
