@@ -7,3 +7,4 @@ edition = "2024"
 raylib = "*"
 toml = "*"
 serde = {version = "*", features = ["derive"]}
+rand = "*"
