@@ -2,6 +2,8 @@ mod cells;
 mod conf;
 use crate::TraceLogLevel::LOG_ERROR;
 use std::process::exit;
+use std::thread;
+use std::time::Duration;
 
 use raylib::prelude::*;
 
@@ -57,7 +59,7 @@ fn main() {
     };
 
     let mut cells: Cells = Cells::new(configuration.grid.width, configuration.grid.height);
-    cells.random_initialize();
+    cells.random_initialize(configuration.game.alive_chance);
 
     let (mut rl, thread) = raylib::init()
         .size(configuration.screen.width, configuration.screen.height)
@@ -71,5 +73,8 @@ fn main() {
         d.clear_background(configuration.colors.background_color);
         draw_grid(&configuration, &mut d);
         draw_cells(&mut cells, &configuration, &mut d);
+
+        cells.update();
+        thread::sleep(Duration::from_millis(configuration.game.tick_millis));
     }
 }

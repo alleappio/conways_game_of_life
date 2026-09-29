@@ -33,6 +33,12 @@ pub struct Grid {
 }
 
 #[derive(Deserialize)]
+pub struct Game {
+    pub alive_chance: i32,
+    pub tick_millis: u64,
+}
+
+#[derive(Deserialize)]
 pub struct Colors {
     #[serde(deserialize_with = "deserialize_color")]
     pub background_color: Color,
@@ -40,8 +46,6 @@ pub struct Colors {
     pub line_color: Color,
     #[serde(deserialize_with = "deserialize_color")]
     pub cell_color: Color,
-    #[serde(deserialize_with = "deserialize_color")]
-    pub red_color: Color,
 }
 
 #[derive(Deserialize)]
@@ -49,6 +53,7 @@ pub struct Conf {
     pub screen: Screen,
     pub grid: Grid,
     pub colors: Colors,
+    pub game: Game
 }
 
 impl Conf {
