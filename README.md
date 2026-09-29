@@ -8,3 +8,4 @@ I'm doing this small exercise just to pass time.
 
 - python
 - c
+- rust
