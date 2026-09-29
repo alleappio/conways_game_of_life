@@ -1,0 +1,13 @@
+[screen]
+width = 640
+height = 640
+
+[grid]
+width = 100
+height = 100
+
+[colors]
+background_color = "#323232"
+line_color = "#c8c8c8"
+cell_color = "#afafaf"
+red_color = "#960000"
