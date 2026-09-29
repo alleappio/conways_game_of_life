@@ -1,7 +1,7 @@
 #[derive(Clone, Copy, PartialEq)]
 pub enum Cell {
     Alive,
-    Dead
+    Dead,
 }
 pub struct Cells {
     grid_width: usize,

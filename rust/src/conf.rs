@@ -1,6 +1,5 @@
 use raylib::ffi::Color;
 use serde::{Deserialize, de::Error};
-use toml::Table;
 
 fn deserialize_color<'de, D>(deserializer: D) -> Result<Color, D::Error>
 where
@@ -53,7 +52,7 @@ pub struct Conf {
     pub screen: Screen,
     pub grid: Grid,
     pub colors: Colors,
-    pub game: Game
+    pub game: Game,
 }
 
 impl Conf {
